@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock } from "three";
+// import { Clock } from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { onMounted, ref } from "vue";
 import camera from "@/components/three/camera";
@@ -33,6 +33,12 @@ function render() {
   controls.update();
   //console.log(delta);
 }
+
+window.addEventListener("resize", () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
 </script>
 
 <template>
